@@ -1,8 +1,18 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from lists.models import Item
 
 
 def home_page(request):
-    return render(request, 'home.html', {
-        'new_item_text': request.POST.get('item_text', ''),
-    })
+    #TODO
+    # - Don't save blank items for every request
+    # - Display multiple items in the table
+    # - Support more than one list!
+
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['item_text'])
+        return redirect('/')
+
+    items = Item.objects.all()
+    return render(request, 'home.html', {'items': items})
