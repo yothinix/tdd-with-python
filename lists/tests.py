@@ -28,7 +28,7 @@ class ListViewTest(TestCase):
         response = self.client.get('/lists/%d/' % (list_.id))
         self.assertTemplateUsed(response, 'list.html')
 
-    
+
     def test_displays_only_items_for_that_list(self):
         correct_list = List.objects.create()
         Item.objects.create(text='itemey 1', list=correct_list)
@@ -101,7 +101,7 @@ class NewListTest(TestCase):
         )
         new_list = List.objects.first()
         self.assertRedirects(response, '/lists/%d/' % (new_list.id,))
-        
+
 
 class NewItemTest(TestCase):
 
