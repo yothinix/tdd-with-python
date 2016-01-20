@@ -1,0 +1,15 @@
+'superlist_runtests':
+    script:
+        - "sudo apt-get install python3 python3-pip"
+        - "sudo pip3 install virtualenv"
+        - mkdir -p database
+        - mkdir -p static
+        - mkdir -p virtualenv
+        - git clone git@git.proteus-tech.com:man/tdd-with-python.git source
+        - "virtualenv --python=python3 virtualenv"
+        - "virtualenv/bin/pip install -r source/requirements.txt"
+        - "cd source && ../virtualenv/bin/python3 manage.py migrate --noinput"
+        - "../virtualenv/bin/python3 manage.py test"
+    tags:
+    except:
+        - tags
