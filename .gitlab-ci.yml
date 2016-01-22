@@ -5,7 +5,7 @@
         - mkdir -p ../static
         - mkdir -p ../virtualenv
         - "cd .. && virtualenv --python=python3 virtualenv"
-        - "virtualenv/bin/pip install -r source/requirements.txt"
+        - "virtualenv/bin/pip install -r superlist/requirements.txt"
         - "virtualenv/bin/pip install selenium"
         - "cd superlist && ../virtualenv/bin/python3 manage.py migrate --noinput"
         - "../virtualenv/bin/python3 manage.py test"
